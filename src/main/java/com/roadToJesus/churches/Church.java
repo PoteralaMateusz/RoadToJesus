@@ -17,7 +17,7 @@ public class Church {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private double lon;
-    private double lat;
+    private double longitude;
+    private double latitude;
 
 }

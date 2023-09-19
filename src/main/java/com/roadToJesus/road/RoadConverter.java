@@ -1,8 +1,8 @@
 package com.roadToJesus.road;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class RoadConverter {
     public Road convert(Object[] source) {
         String start = (String) source[0];
