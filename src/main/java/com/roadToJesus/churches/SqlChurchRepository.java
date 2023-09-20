@@ -19,5 +19,12 @@ public interface SqlChurchRepository extends RoadRepository, ChurchRepository, J
             "CROSS JOIN churches b " +
             "WHERE a.id = :churchId AND a.id != b.id",
             nativeQuery = true)
-    List<Object[]> calculateDistancesBetweenChurchToOthers(@Param("churchId") Long churchId);
+    List<Object[]> distancesBetweenChurchToOthers(@Param("churchId") Long churchId);
+
+    @Query(value = "SELECT 'Your point' AS start, " +
+            "a.name AS destination, " +
+            "ST_DistanceSphere(ST_Point(a.longitude, a.latitude), ST_Point(:longitude, :latitude)) AS distance " +
+            "FROM churches a",
+            nativeQuery = true)
+    List<Object[]> distancesBetweenPointToChurches(@Param("longitude") double longitude, @Param("latitude") double latitude);
 }
