@@ -22,7 +22,15 @@ public class RoadService {
                     .build();
         }
         return ResponseEntity.status(200)
-                .body(roadRepository.calculateDistancesBetweenChurchToOthers(id)
+                .body(roadRepository.distancesBetweenChurchToOthers(id)
+                        .stream()
+                        .map(roadConverter::convert)
+                        .collect(Collectors.toList()));
+    }
+
+    public ResponseEntity<List<Road>> roadsBetweenPointToChurches(double longitude, double latitude){
+        return ResponseEntity.status(200)
+                .body(roadRepository.distancesBetweenPointToChurches(longitude,latitude)
                         .stream()
                         .map(roadConverter::convert)
                         .collect(Collectors.toList()));

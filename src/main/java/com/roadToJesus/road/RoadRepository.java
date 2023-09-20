@@ -4,5 +4,7 @@ import java.util.List;
 
 public interface RoadRepository {
 
-    List<Object[]> calculateDistancesBetweenChurchToOthers(Long churchId);
+    List<Object[]> distancesBetweenChurchToOthers(Long churchId);
+
+    List<Object[]> distancesBetweenPointToChurches(double longitude, double latitude);
 }
