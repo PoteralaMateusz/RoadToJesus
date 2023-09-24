@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Road {
-    private String start;
-    private String destination;
+    private Long destinationChurch;
     private Double distance;
 }

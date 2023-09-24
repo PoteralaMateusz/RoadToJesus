@@ -1,13 +1,13 @@
 package com.roadToJesus.road;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RoadConverter {
     public Road convert(Object[] source) {
-        String start = (String) source[0];
-        String destination = (String) source[1];
-        Double distance = (Double) source[2];
-        return new Road(start, destination, distance);
+        Long destinationChurch = Long.valueOf((Integer)source[0]);
+        Double distance = (Double) source[1];
+        return new Road(destinationChurch, distance);
     }
 }
