@@ -12,19 +12,19 @@ import java.util.List;
 @Repository
 public interface SqlChurchRepository extends RoadRepository, ChurchRepository, JpaRepository<Church, Long> {
 
-    @Query(value = "SELECT a.name AS start, " +
-            "b.name AS destination, " +
+    @Query(value = "SELECT b.id AS destinationChurch, " +
             "ST_DistanceSphere(ST_Point(a.longitude, a.latitude), ST_Point(b.longitude, b.latitude)) AS distance " +
             "FROM churches a " +
             "CROSS JOIN churches b " +
-            "WHERE a.id = :churchId AND a.id != b.id",
+            "WHERE a.id = :churchId AND a.id != b.id " +
+            "ORDER BY distance",
             nativeQuery = true)
     List<Object[]> distancesBetweenChurchToOthers(@Param("churchId") Long churchId);
 
-    @Query(value = "SELECT 'Your point' AS start, " +
-            "a.name AS destination, " +
+    @Query(value = "SELECT a.id AS destinationChurch, " +
             "ST_DistanceSphere(ST_Point(a.longitude, a.latitude), ST_Point(:longitude, :latitude)) AS distance " +
-            "FROM churches a",
+            "FROM churches a " +
+            "ORDER BY distance",
             nativeQuery = true)
     List<Object[]> distancesBetweenPointToChurches(@Param("longitude") double longitude, @Param("latitude") double latitude);
 }
