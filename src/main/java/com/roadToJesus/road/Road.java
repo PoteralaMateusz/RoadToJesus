@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Road {
-    private Church destinationChurch;
+    private Long destinationChurchID;
     private Double distance;
 }
