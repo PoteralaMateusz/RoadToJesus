@@ -17,8 +17,8 @@ public class RoadController {
         return roadService.roadsBetweenChurchToOthers(id);
     }
 
-    @GetMapping("/point/")
-    public ResponseEntity<List<Road>> roadsBetweenPointToChurches(@RequestBody LocationPoint point) {
-        return roadService.roadsBetweenPointToChurches(point.longitude(), point.latitude());
+    @GetMapping("/point/{longitude}/{latitude}")
+    public ResponseEntity<List<Road>> roadsBetweenPointToChurches(@PathVariable double longitude, @PathVariable double latitude) {
+        return roadService.roadsBetweenPointToChurches(longitude, latitude);
     }
 }
