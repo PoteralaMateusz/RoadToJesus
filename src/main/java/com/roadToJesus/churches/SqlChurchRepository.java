@@ -21,7 +21,7 @@ public interface SqlChurchRepository extends RoadRepository, ChurchRepository, J
             nativeQuery = true)
     List<Object[]> distancesBetweenChurchToOthers(@Param("churchId") Long churchId);
 
-    @Query(value = "SELECT a.id AS destinationChurch, " +
+    @Query(value = "SELECT a AS destinationChurch, " +
             "ST_DistanceSphere(ST_Point(a.longitude, a.latitude), ST_Point(:longitude, :latitude)) AS distance " +
             "FROM churches a " +
             "ORDER BY distance",

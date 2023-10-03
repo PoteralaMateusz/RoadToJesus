@@ -1,5 +1,6 @@
 package com.roadToJesus.road;
 
+import com.roadToJesus.churches.Church;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Road {
-    private Long destinationChurch;
+    private Church destinationChurch;
     private Double distance;
 }
